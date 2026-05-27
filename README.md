@@ -1,14 +1,11 @@
-# SI-Prod Web Application — Terraform Infrastructure
-
-Production-style AWS infrastructure for a containerised web application, defined entirely using Terraform.
-
+# Simple Prod Web Application — Terraform Infrastructure
 This project provisions a modular, reusable AWS platform using ECS Fargate, Application Load Balancer, VPC networking, ECR, IAM, CloudWatch, and ECS Service Auto Scaling.
 
 ---
 
 # Overview
 
-The infrastructure follows a production-style deployment pattern for containerised workloads.
+The infrastructure follows a production deployment pattern for containerised workloads.
 
 Architecture components:
 
@@ -28,7 +25,7 @@ All infrastructure resources are managed entirely through Terraform with a modul
 
 # Architecture
 
-**[Add architecture diagram image here]**
+**[![Architecture Diagram](./architecture/ecs_arch.png)]**
 
 Example flow:
 
@@ -227,32 +224,12 @@ Benefits:
 
 ---
 
-## IAM Least-Privilege Model
-
-Separate IAM roles are used.
-
-### Execution Role
-
-Used by ECS agent for:
-
-- ECR image pulls
-- CloudWatch logging
-
-### Task Role
-
-Used by running containers for application-level AWS access.
-
-This separation enforces least-privilege boundaries and reduces blast radius.
-
----
-
 ## Standardised Resource Tagging
 
 All resources receive:
 
 - Project
 - Environment
-- ManagedBy
 
 along with resource-specific `Name` tags.
 
@@ -278,23 +255,6 @@ Benefits:
 
 ---
 
-# Cost Awareness
-
-Estimated monthly cost (AWS On-Demand pricing, approximate).
-
-| Resource | Approximate Cost |
-|------------|------------------|
-| Application Load Balancer | ~$16/month + LCU usage |
-| NAT Gateway | ~$32/month + data processing |
-| ECS Fargate — Web Service | ~$8–12/month |
-| ECS Fargate — API Service | ~$10–18/month |
-| Amazon ECR | ~$1/month |
-| CloudWatch Logs | Usage-based |
-| S3 Backend State | <$1/month |
-| **Estimated Total** | **~$70–85/month** |
-
----
-
 ## Cost Optimisation Approach
 
 Several decisions were made with cost efficiency in mind:
@@ -317,7 +277,9 @@ Additional optimisation opportunities:
 
 # AWS Pricing Calculator
 
-**[Add AWS Pricing Calculator link here]**
+A detailed infrastructure cost estimate was created using the AWS Pricing Calculator.
+
+[View Cost Estimate](https://calculator.aws/#/estimate?id=b7f60d20baf4880b7293347d65cb35882668711e)
 
 ---
 
@@ -325,7 +287,7 @@ Additional optimisation opportunities:
 
 Before deployment, ensure the following requirements are met:
 
-- Terraform >= 1.10
+- Terraform
 - AWS CLI configured
 - Docker installed
 - Appropriate AWS IAM permissions
