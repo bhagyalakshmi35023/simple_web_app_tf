@@ -25,7 +25,7 @@ All infrastructure resources are managed entirely through Terraform with a modul
 
 # Architecture
 
-**[![Architecture Diagram](./architecture/ecs_arch.png)]**
+*![Architecture Diagram](./architecture/ecs_arch.png)**
 
 Example flow:
 
